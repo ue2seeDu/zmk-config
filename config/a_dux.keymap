@@ -101,18 +101,18 @@
 
     base_layer {
       bindings = <
-	&kp Q      &kp W      &kp E       &kp R       &kp T &kp Y &kp U       &kp I       &kp O        &kp SQT
-	&hm LGUI A &hm LALT S &hm LCTRL D &hm LSHFT F &kp G &kp H &hm LSHFT J &hm LCTRL K &hm LALT L   &hm LGUI SEMI
-	&kp Z      &hm RALT X &kp C       &kp V       &kp B &kp N &kp M       &kp COMMA   &hm RALT DOT &kp SLASH
-	&lt CTL SPC &lt MISC TAB &lt SYM ENTER &lt NUM BSPC
+	&kp Q      &kp W      &kp E       &kp R       &kp T     &kp Y &kp U       &kp I       &kp O        &kp SQT
+	&lt SYM A  &hm LALT S &hm LSHFT D &hm LCTRL F &kp G     &kp H &hm RCTRL J &hm LSHFT K &hm LALT L   &lt SYM SEMI
+	&hm LGUI Z &kp X      &kp C       &kp V       &kp B     &kp N &kp M       &kp COMMA   &hm RALT DOT &hm RGUI SLASH
+	&lt CTL SPC &lt MISC ENTER &key_repeat &lt NUM BSPC
 	>;
     };
 
     sturdy_layer {
       bindings = <
-	&kp Q      &kp D      &kp R       &kp W       &kp B  &kp J &kp F       &kp U       &kp P      &kp SQT
-        &hm LGUI A &hm LALT S &hm LCTRL H &hm LSHFT T &kp G  &kp Y &hm LSHFT N &hm LCTRL E &hm LALT O &hm LGUI I
-	&kp Z      &kp X      &kp M       &kp C       &kp V  &kp K &kp L       &kp COMMA   &kp DOT    &kp SLASH
+	&kp V      &kp M      &kp L       &kp C       &kp P     &kp B &kp F       &kp U       &kp O      &kp Q
+        &lt SYM S  &hm LALT T &hm LSHFT R &hm LCTRL D &kp Y     &kp F &hm RCTRL N &hm RSHFT E &hm LALT A &lt SYM I
+	&hm LGUI X &kp K      &kp J       &kp G       &kp W     &kp Z &kp H       &kp COMMA   &kp DOT    &hm RGUI SLASH
 	&trans &trans &trans &trans
 	>;
     };
@@ -120,7 +120,7 @@
     num_layer {
       bindings = <
 	&kp EQUAL &kp N7 &kp N8 &kp N9 &trans &trans &trans    &trans    &trans   &trans
-	&kp MINUS &kp N4 &kp N5 &kp N6 &trans &trans &kp LSHFT &kp LCTRL &kp LALT &kp LGUI
+	&kp MINUS &kp N4 &kp N5 &kp N6 &trans &trans &kp LSHFT &kp LCTRL &kp LALT &kp RGUI
 	&kp BSLH  &kp N1 &kp N2 &kp N3 &trans &trans &trans    &trans    &trans   &trans
 	&kp N0 &trans &trans &trans
 	>;
@@ -129,7 +129,7 @@
     sym_layer {
       bindings = <
 	&kp PLUS  &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR &trans &trans    &trans    &trans   &trans
-	&kp UNDER &kp DLLR &kp PRCNT &kp CARET &trans   &trans &kp LSHFT &kp LCTRL &kp LALT &kp LGUI
+	&kp UNDER &kp DLLR &kp PRCNT &kp CARET &trans   &trans &kp LSHFT &kp LCTRL &kp LALT &kp RGUI
 	&kp PIPE  &kp EXCL &kp AT    &kp HASH  &trans   &trans &trans    &trans    &trans   &trans
 	&trans &trans &trans &trans
 	>;
