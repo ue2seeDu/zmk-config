@@ -38,49 +38,49 @@
       timeout-ms = <50>;
       key-positions = <5 15>;
       bindings = <&kp LBKT>;
-      layers = <0>;
+      layers = <0 1>;
     };
 
     combo_rbkt {
       timeout-ms = <50>;
       key-positions = <4 14>;
       bindings = <&kp RBKT>;
-      layers = <0>;
+      layers = <0 1>;
     };
 
     combo_semi {
       timeout-ms = <50>;
       key-positions = <15 25>;
       bindings = <&kp P>;
-      layers = <0>;
+      layers = <0 1>;
     };
 
     combo_grave {
       timeout-ms = <50>;
       key-positions = <14 24>;
       bindings = <&kp GRAVE>;
-      layers = <0>;
+      layers = <0 1>;
     };
 
     combo_esc {
       timeout-ms = <50>;
       key-positions = <30 31>;
       bindings = <&kp ESC>;
-      layers = <0>;
+      layers = <0 1>;
     };
 
     combo_del {
       timeout-ms = <50>;
       key-positions = <32 33>;
       bindings = <&kp DEL>;
-      layers = <0>;
+      layers = <0 1>;
     };
 
     combo_caps_word {
       timeout-ms = <50>;
       key-positions = <13 16>;
       bindings = <&caps_word>;
-      layers = <0>;
+      layers = <0 1>;
     };
   };
 
@@ -110,7 +110,7 @@
 
     sturdy_layer {
       bindings = <
-	&kp V      &kp M      &kp L       &kp C       &kp P     &kp B &kp F       &kp U       &kp O      &kp Q
+	&kp V      &kp M      &kp L       &kp C       &kp P     &kp B &none       &kp U       &kp O      &kp Q
         &lt SYM S  &hm LALT T &hm LSHFT R &hm LCTRL D &kp Y     &kp F &hm RCTRL N &hm RSHFT E &hm LALT A &lt SYM I
 	&hm LGUI X &kp K      &kp J       &kp G       &kp W     &kp Z &kp H       &kp COMMA   &kp DOT    &hm RGUI SLASH
 	&trans &trans &trans &trans
@@ -119,27 +119,27 @@
 
     num_layer {
       bindings = <
-	&kp EQUAL &kp N7 &kp N8 &kp N9 &trans &trans &trans    &trans    &trans   &trans
-	&kp MINUS &kp N4 &kp N5 &kp N6 &trans &trans &kp LSHFT &kp LCTRL &kp LALT &kp RGUI
-	&kp BSLH  &kp N1 &kp N2 &kp N3 &trans &trans &trans    &trans    &trans   &trans
+	&kp EQUAL &kp N7 &kp N8 &kp N9 &trans    &trans &trans    &trans    &trans   &trans
+	&kp MINUS &kp N4 &kp N5 &kp N6 &kp TAB   &trans &kp LCTRL &kp LSHFT &kp LALT &kp RGUI
+	&kp BSLH  &kp N1 &kp N2 &kp N3 &trans    &trans &trans    &trans    &trans   &trans
 	&kp N0 &trans &trans &trans
 	>;
     };
 
     sym_layer {
       bindings = <
-	&kp PLUS  &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR &trans &trans    &trans    &trans   &trans
-	&kp UNDER &kp DLLR &kp PRCNT &kp CARET &trans   &trans &kp LSHFT &kp LCTRL &kp LALT &kp RGUI
-	&kp PIPE  &kp EXCL &kp AT    &kp HASH  &trans   &trans &trans    &trans    &trans   &trans
+	&kp PLUS  &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR    &kp LT &trans    &trans    &trans   &trans
+	&kp UNDER &kp DLLR &kp PRCNT &kp CARET &kp SQT     &kp GT &kp LSHFT &kp LCTRL &kp LALT &kp RGUI
+	&kp PIPE  &kp EXCL &kp AT    &kp HASH  &kp DQT     &trans &trans    &trans    &trans   &trans
 	&trans &trans &trans &trans
 	>;
     };
 
     misc_layer {
       bindings = <
-	&trans   &trans   &trans    &trans    &trans &to DEFAULT &to STURDY  &trans       &trans &trans
-	&kp LGUI &kp LALT &kp LCTRL &kp LSHFT &trans &trans      &kp CAPS    &kp LS(CAPS) &trans &trans
-	&trans   &trans   &trans    &trans    &trans &trans      &trans      &trans       &trans &trans
+	&trans   &trans   &trans    &trans    &trans &to DEFAULT &to STURDY  &trans  &trans &trans
+	&kp LGUI &kp LALT &kp LCTRL &kp LSHFT &trans &trans      &kp CAPS    &trans  &trans &trans
+	&trans   &trans   &trans    &trans    &trans &trans      &trans      &trans  &trans &trans
 	&trans &trans &trans &trans
 	>;
     };
