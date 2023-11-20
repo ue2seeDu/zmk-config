@@ -126,7 +126,7 @@
       bindings = <
 	&kp V      &kp M      &kp L       &kp C       &kp P     &kp B &none       &kp U       &kp O      &kp Q
         &lt SYM S  &hm LALT T &hm LSHFT R &hm LCTRL D &kp Y     &kp F &hm RCTRL N &hm RSHFT E &hm LALT A &lt SYM I
-	&hm LGUI X &kp K      &kp J       &kp G       &kp W     &kp Z &kp H       &dqmark     &comexcl   &hm RGUI SLASH
+	&hm LGUI X &kp K      &kp J       &kp G       &kp W     &kp Z &kp H       &comexcl    &dqmark    &hm RGUI SLASH
 	&trans &trans &trans &trans
 	>;
     };
