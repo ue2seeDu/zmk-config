@@ -94,6 +94,20 @@
       quick-tap-ms = <125>;
       bindings = <&kp>, <&kp>;
     };
+    dqmark: dot_qmark {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_QMARK";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp QMARK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
+    comexcl: comm_excl {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_EXCL";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+    };
   };
 
   keymap {
@@ -112,7 +126,7 @@
       bindings = <
 	&kp V      &kp M      &kp L       &kp C       &kp P     &kp B &none       &kp U       &kp O      &kp Q
         &lt SYM S  &hm LALT T &hm LSHFT R &hm LCTRL D &kp Y     &kp F &hm RCTRL N &hm RSHFT E &hm LALT A &lt SYM I
-	&hm LGUI X &kp K      &kp J       &kp G       &kp W     &kp Z &kp H       &kp COMMA   &kp DOT    &hm RGUI SLASH
+	&hm LGUI X &kp K      &kp J       &kp G       &kp W     &kp Z &kp H       &dqmark     &comexcl   &hm RGUI SLASH
 	&trans &trans &trans &trans
 	>;
     };
