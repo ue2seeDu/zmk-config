@@ -151,9 +151,9 @@
 
     misc_layer {
       bindings = <
-	&trans   &trans   &trans    &trans    &trans     &to DEFAULT &to STURDY  &trans  &trans &trans
-	&kp LGUI &kp LALT &kp LSHFT &kp LCTRL &trans     &trans      &kp CAPS    &trans  &trans &trans
-	&trans   &trans   &trans    &trans    &trans     &trans      &trans      &trans  &trans &trans
+	&trans   &trans   &trans    &trans    &trans     &to DEFAULT  &to STURDY   &trans     &trans          &trans
+	&kp LGUI &kp LALT &kp LSHFT &kp LCTRL &trans     &trans       &kp CAPS     &trans     &trans          &trans
+	&trans   &trans   &trans    &trans    &trans     &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE &kp PAUSE_BREAK &kp PSCRN
 	&trans &trans &trans &trans
 	>;
     };
