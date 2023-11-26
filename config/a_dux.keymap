@@ -95,18 +95,18 @@
       bindings = <&kp>, <&kp>;
     };
     dqmark: dot_qmark {
-            compatible = "zmk,behavior-mod-morph";
-            label = "DOT_QMARK";
-            #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp QMARK>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+      compatible = "zmk,behavior-mod-morph";
+      label = "DOT_QMARK";
+      #binding-cells = <0>;
+      bindings = <&kp DOT>, <&kp QMARK>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
     };
     comexcl: comm_excl {
-            compatible = "zmk,behavior-mod-morph";
-            label = "COMMA_EXCL";
-            #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp EXCL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+      compatible = "zmk,behavior-mod-morph";
+      label = "COMMA_EXCL";
+      #binding-cells = <0>;
+      bindings = <&kp COMMA>, <&kp EXCL>;
+      mods = <(MOD_LSFT|MOD_RSFT)>;
     };
   };
 
