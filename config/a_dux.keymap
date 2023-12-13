@@ -3,15 +3,14 @@
  *
  * SPDX-License-Identifier: MIT
  */
-
 /* |  0 |  1 |  2 |  3 |  4 |    |   |    |  5 |  6 |  7 |  8 |  9 |
    | 10 | 11 | 12 | 13 | 14 |    |   |    | 15 | 16 | 17 | 18 | 19 |
    | 20 | 21 | 22 | 23 | 24 |    |   |    | 25 | 26 | 27 | 28 | 29 |
    |    |    |    |    | 30 | 31 |   | 32 | 33 |    |    |    |    | */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 
 #define DEFAULT  0
@@ -22,7 +21,7 @@
 #define CTL      5
 
 &caps_word {
-  continue-list = <UNDERSCORE MINUS>;
+    continue-list = <UNDERSCORE MINUS>;
 };
 
 &lt {
@@ -31,161 +30,164 @@
 };
 
 / {
-  combos {
-    compatible = "zmk,combos";
+    combos {
+        compatible = "zmk,combos";
 
-    combo_lbkt {
-      timeout-ms = <50>;
-      key-positions = <5 15>;
-      bindings = <&kp LBKT>;
-      layers = <0 1>;
+        combo_lbkt {
+            timeout-ms = <50>;
+            key-positions = <5 15>;
+            bindings = <&kp LBKT>;
+            layers = <0 1>;
+        };
+
+        combo_rbkt {
+            timeout-ms = <50>;
+            key-positions = <4 14>;
+            bindings = <&kp RBKT>;
+            layers = <0 1>;
+        };
+
+        combo_semi {
+            timeout-ms = <50>;
+            key-positions = <15 25>;
+            bindings = <&kp P>;
+            layers = <0 1>;
+        };
+
+        combo_grave {
+            timeout-ms = <50>;
+            key-positions = <14 24>;
+            bindings = <&kp GRAVE>;
+            layers = <0 1>;
+        };
+
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <30 31>;
+            bindings = <&kp ESC>;
+            layers = <0 1>;
+        };
+
+        combo_del {
+            timeout-ms = <50>;
+            key-positions = <32 33>;
+            bindings = <&kp DEL>;
+            layers = <0 1>;
+        };
+
+        combo_caps_word {
+            timeout-ms = <50>;
+            key-positions = <13 16>;
+            bindings = <&caps_word>;
+            layers = <0 1>;
+        };
     };
 
-    combo_rbkt {
-      timeout-ms = <50>;
-      key-positions = <4 14>;
-      bindings = <&kp RBKT>;
-      layers = <0 1>;
+    behaviors {
+        rhm: rhm {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RHM";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <230>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <100>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <0 10 11 13 14 20 21 22 23 24 30 31 4 3 2 12 1>;
+        };
+
+        lhm: lhm {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LHM";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <230>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <100>;
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33>;
+            hold-trigger-on-release;
+            flavor = "balanced";
+        };
+
+        dqmark: dot_qmark {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_QMARK";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp QMARK>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        comexcl: comm_excl {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_EXCL";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp EXCL>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
-    combo_semi {
-      timeout-ms = <50>;
-      key-positions = <15 25>;
-      bindings = <&kp P>;
-      layers = <0 1>;
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            bindings = <
+&kp Q        &kp W        &kp E         &kp R         &kp T                                       &kp Y         &kp U         &kp I         &kp O        &kp SQT
+&lt SYM A    &lhm LALT S  &lhm LSHFT D  &lhm LCTRL F  &kp G                                       &kp H         &rhm RCTRL J  &rhm LSHFT K  &rhm LALT L  &lt SYM SEMI
+&lhm LGUI Z  &kp X        &kp C         &kp V         &kp B                                       &kp N         &kp M         &kp COMMA     &kp DOT      &rhm RGUI SLASH
+                                                      &lt CTL SPC  &lt MISC ENTER    &key_repeat  &lt NUM BSPC
+            >;
+        };
+
+        sturdy_layer {
+            bindings = <
+&kp V        &kp M        &kp L         &kp C         &kp P                     &kp B   &none         &kp U         &kp O        &kp Q
+&lt SYM S    &lhm LALT T  &lhm LSHFT R  &lhm LCTRL D  &kp Y                     &kp F   &rhm RCTRL N  &rhm RSHFT E  &rhm LALT A  &lt SYM I
+&lhm LGUI X  &kp K        &kp J         &kp G         &kp W                     &kp Z   &kp H         &comexcl      &dqmark      &rhm RGUI SLASH
+                                                      &trans  &trans    &trans  &trans
+            >;
+        };
+
+        num_layer {
+            bindings = <
+&kp EQUAL  &kp N7  &kp N8  &kp N9  &trans                     &trans  &trans     &trans     &trans    &trans
+&kp MINUS  &kp N4  &kp N5  &kp N6  &kp TAB                    &trans  &kp LCTRL  &kp LSHFT  &kp LALT  &trans
+&kp BSLH   &kp N1  &kp N2  &kp N3  &trans                     &trans  &trans     &trans     &trans    &kp RGUI
+                                   &kp N0   &trans    &trans  &trans
+            >;
+        };
+
+        sym_layer {
+            bindings = <
+&kp PLUS   &kp AMPS  &kp ASTRK  &kp LPAR   &kp RPAR                    &kp LT    &trans     &trans     &trans    &trans
+&kp UNDER  &kp DLLR  &kp PRCNT  &kp CARET  &kp SQT                     &kp GT    &kp LCTRL  &kp LSHFT  &kp LALT  &trans
+&kp PIPE   &kp EXCL  &kp AT     &kp HASH   &kp DQT                     &kp SEMI  &kp COLON  &trans     &trans    &kp RGUI
+                                           &trans    &trans    &trans  &trans
+            >;
+        };
+
+        misc_layer {
+            bindings = <
+&trans    &trans    &trans     &trans     &trans                    &to DEFAULT   &to STURDY    &trans      &trans           &trans
+&trans    &kp LALT  &kp LSHFT  &kp LCTRL  &trans                    &trans        &kp CAPS      &trans      &kp PSCRN        &trans
+&kp LGUI  &trans    &trans     &trans     &trans                    &kp K_VOL_UP  &kp K_VOL_DN  &kp K_MUTE  &kp PAUSE_BREAK  &kp RGUI
+                                          &trans  &trans    &trans  &trans
+            >;
+        };
+
+        ctrl_layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &bootloader                    &bootloader  &trans        &trans        &trans        &trans
+&trans  &trans  &trans  &trans  &sys_reset                     &sys_reset   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
+&trans  &trans  &trans  &trans  &trans                         &trans       &out OUT_TOG  &bt BT_CLR    &trans        &trans
+                                &trans       &trans    &trans  &trans
+            >;
+        };
     };
-
-    combo_grave {
-      timeout-ms = <50>;
-      key-positions = <14 24>;
-      bindings = <&kp GRAVE>;
-      layers = <0 1>;
-    };
-
-    combo_esc {
-      timeout-ms = <50>;
-      key-positions = <30 31>;
-      bindings = <&kp ESC>;
-      layers = <0 1>;
-    };
-
-    combo_del {
-      timeout-ms = <50>;
-      key-positions = <32 33>;
-      bindings = <&kp DEL>;
-      layers = <0 1>;
-    };
-
-    combo_caps_word {
-      timeout-ms = <50>;
-      key-positions = <13 16>;
-      bindings = <&caps_word>;
-      layers = <0 1>;
-    };
-  };
-
-  behaviors {
-    rhm: rhm {
-         compatible = "zmk,behavior-hold-tap";
-         label = "RHM";
-         bindings = <&kp>, <&kp>;
-
-         #binding-cells = <2>;
-         flavor = "balanced";
-         tapping-term-ms = <280>;
-         quick-tap-ms = <175>;
-         require-prior-idle-ms = <125>;
-         hold-trigger-on-release;
-         hold-trigger-key-positions = <0 10 11 13 14 20 21 22 23 24 30 31 4 3 2 12 1>;
-     };
-
-    lhm: lhm {
-        compatible = "zmk,behavior-hold-tap";
-        label = "LHM";
-        bindings = <&kp>, <&kp>;
-
-        #binding-cells = <2>;
-        tapping-term-ms = <280>;
-        quick-tap-ms = <175>;
-        require-prior-idle-ms = <125>;
-        hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 32 33>;
-        hold-trigger-on-release;
-        flavor = "balanced";
-    };
-    dqmark: dot_qmark {
-      compatible = "zmk,behavior-mod-morph";
-      label = "DOT_QMARK";
-      #binding-cells = <0>;
-      bindings = <&kp DOT>, <&kp QMARK>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-    comexcl: comm_excl {
-      compatible = "zmk,behavior-mod-morph";
-      label = "COMMA_EXCL";
-      #binding-cells = <0>;
-      bindings = <&kp COMMA>, <&kp EXCL>;
-      mods = <(MOD_LSFT|MOD_RSFT)>;
-    };
-  };
-
-  keymap {
-    compatible = "zmk,keymap";
-
-    base_layer {
-      bindings = <
-	&kp Q       &kp W       &kp E        &kp R        &kp T     &kp Y &kp U        &kp I        &kp O        &kp SQT
-	&lt SYM A   &lhm LALT S &lhm LSHFT D &lhm LCTRL F &kp G     &kp H &rhm RCTRL J &rhm LSHFT K &rhm LALT L  &lt SYM SEMI
-	&lhm LGUI Z &kp X       &kp C        &kp V        &kp B     &kp N &kp M        &kp COMMA    &kp DOT      &rhm RGUI SLASH
-	&lt CTL SPC &lt MISC ENTER &key_repeat &lt NUM BSPC
-	>;
-    };
-
-    sturdy_layer {
-      bindings = <
-	&kp V       &kp M       &kp L        &kp C        &kp P     &kp B &none        &kp U        &kp O       &kp Q
-        &lt SYM S   &lhm LALT T &lhm LSHFT R &lhm LCTRL D &kp Y     &kp F &rhm RCTRL N &rhm RSHFT E &rhm LALT A &lt SYM I
-	&lhm LGUI X &kp K       &kp J        &kp G        &kp W     &kp Z &kp H        &comexcl     &dqmark     &rhm RGUI SLASH
-	&trans &trans &trans &trans
-	>;
-    };
-
-    num_layer {
-      bindings = <
-	&kp EQUAL &kp N7 &kp N8 &kp N9 &trans    &trans &trans    &trans    &trans   &trans
-	&kp MINUS &kp N4 &kp N5 &kp N6 &kp TAB   &trans &kp LCTRL &kp LSHFT &kp LALT &trans
-	&kp BSLH  &kp N1 &kp N2 &kp N3 &trans    &trans &trans    &trans    &trans   &kp RGUI
-	&kp N0 &trans &trans &trans
-	>;
-    };
-
-    sym_layer {
-      bindings = <
-	&kp PLUS  &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR    &kp LT   &trans    &trans    &trans   &trans
-	&kp UNDER &kp DLLR &kp PRCNT &kp CARET &kp SQT     &kp GT   &kp LCTRL &kp LSHFT &kp LALT &trans
-	&kp PIPE  &kp EXCL &kp AT    &kp HASH  &kp DQT     &kp SEMI &kp COLON &trans    &trans   &kp RGUI
-	&trans &trans &trans &trans
-	>;
-    };
-
-    misc_layer {
-      bindings = <
-	&trans   &trans   &trans    &trans    &trans     &to DEFAULT  &to STURDY   &trans     &trans          &trans
-	&trans   &kp LALT &kp LSHFT &kp LCTRL &trans     &trans       &kp CAPS     &trans     &kp PSCRN       &trans
-	&kp LGUI &trans   &trans    &trans    &trans     &kp K_VOL_UP &kp K_VOL_DN &kp K_MUTE &kp PAUSE_BREAK &kp RGUI
-	&trans &trans &trans &trans
-	>;
-    };
-
-    ctrl_layer {
-      bindings = <
-	&trans &trans &trans &trans &bootloader   &bootloader &trans       &trans       &trans       &trans
-	&trans &trans &trans &trans &sys_reset    &sys_reset  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3
-	&trans &trans &trans &trans &trans        &trans      &out OUT_TOG &bt BT_CLR   &trans       &trans
-	&trans &trans &trans &trans
-	>;
-    };
-
-  };
 };
 
 /* Local Variables: */
